@@ -8,9 +8,9 @@ const accessRegistrationPage = () => {
     cy.contains('h1', 'Sign Up').should('be.visible');
   };
 
-describe('Create Account Page Test', () => {
+describe('Create Account Page Test', () => {  // Teste de página de criação de conta
 
-    it('Creating an account and accessing the login pagee', () => {
+    it('Creating an account and accessing the login pagee', () => {  // Criando uma conta e acessando a página de login
         loginPage.visitLoginPage()
         createUser.createAccountLink.click()
         cy.contains('h1', 'Sign Up').should('be.visible')
@@ -32,7 +32,7 @@ describe('Create Account Page Test', () => {
         cy.contains('h6', 'Marge').should('be.visible')
       })
 
-    it('Trying to create an account without First Name', () => {
+    it('Trying to create an account without First Name', () => {  // Tentando criar uma conta sem nome
         accessRegistrationPage();
         createUser.createAccount(
         '',
@@ -45,7 +45,7 @@ describe('Create Account Page Test', () => {
         cy.contains('First Name is required').should('be.visible')
     })
 
-    it('Trying to create an account without Last Name', () => {
+    it('Trying to create an account without Last Name', () => {  // Tentando criar uma conta sem sobrenome
         accessRegistrationPage()
         createUser.createAccount(
         dataAccess.userMarge.firstName,
@@ -59,7 +59,7 @@ describe('Create Account Page Test', () => {
         cy.contains('Last Name is required').should('be.visible')
     })
 
-    it('Trying to create an account without a Username', () => {
+    it('Trying to create an account without a Username', () => {  // Tentando criar uma conta sem nome de usuário
         accessRegistrationPage()
         createUser.createAccount(
         dataAccess.userMarge.firstName,
@@ -73,7 +73,7 @@ describe('Create Account Page Test', () => {
         cy.contains('Username is required').should('be.visible')
     })
 
-    it('Trying to create an account without a password', () =>{
+    it('Trying to create an account without a password', () =>{  // Tentando criar uma conta sem senha
         accessRegistrationPage()
         createUser.createAccount(
             dataAccess.userMarge.firstName,
@@ -87,7 +87,7 @@ describe('Create Account Page Test', () => {
         cy.contains('Enter your password').should('be.visible')
     })
 
-    it('Trying to create an account without Password Confirmation', () =>{
+    it('Trying to create an account without Password Confirmation', () =>{  // Tentando criar uma conta sem confirmação de senha
         accessRegistrationPage()
         createUser.createAccount(
             dataAccess.userMarge.firstName,
@@ -101,7 +101,7 @@ describe('Create Account Page Test', () => {
         cy.contains('Confirm your password').should('be.visible')
     })
 
-    it('Trying to create an account with different passwords', () =>{
+    it('Trying to create an account with different passwords', () =>{  // Tentando criar uma conta com senhas diferentes
         accessRegistrationPage()
         createUser.createAccount(
             dataAccess.userMarge.firstName,
@@ -114,7 +114,7 @@ describe('Create Account Page Test', () => {
         cy.contains('Password does not match').should('be.visible')
     })
 
-    it('Trying to create an account with an existing Username', () =>{
+    it('Trying to create an account with an existing Username', () =>{  // Tentando criar uma conta com um nome de usuário existente
         accessRegistrationPage()
         createUser.createAccount(
             dataAccess.userMarge.firstName, 
@@ -127,7 +127,7 @@ describe('Create Account Page Test', () => {
         cy.contains('Username already exists').should('be.visible')
     })
 
-    it('Trying to create an account with a very short password', () =>{
+    it('Trying to create an account with a very short password', () =>{  // Tentando criar uma conta com uma senha muito curta
         accessRegistrationPage()
         createUser.createAccount(
             dataAccess.userMarge.firstName,
@@ -140,7 +140,7 @@ describe('Create Account Page Test', () => {
         cy.contains('Password must contain at least 4 characters').should('be.visible')
     })
 
-    it('Trying to create an account with invalid characters', () =>{
+    it('Trying to create an account with invalid characters', () =>{  // Tentando criar uma conta com caracteres inválidos
         accessRegistrationPage()
         createUser.createAccount(
             dataAccess.userMarge.firstName, 

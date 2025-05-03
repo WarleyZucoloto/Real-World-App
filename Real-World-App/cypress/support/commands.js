@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginViaApi', () => {
+    cy.request({
+      method: 'POST',
+      url: '/api/auth/login', // ou o endpoint da sua API
+      body: {
+        login: 'esx2023@cooki.com.br',
+        senha: 'esx2023'
+      }
+    }).then((resp) => {
+      window.localStorage.setItem('token', resp.body.token) // ou como seu app armazena
+    })
+  })

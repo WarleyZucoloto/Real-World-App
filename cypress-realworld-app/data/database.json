@@ -74,6 +74,30 @@
       "balance": 49474,
       "createdAt": "2023-12-07T04:39:38.383Z",
       "modifiedAt": "2024-03-07T00:07:36.510Z"
+    },
+    {
+      "id": "BdYMwSxn8",
+      "uuid": "94ace222-7c56-47a0-ab62-e4b0291b2576",
+      "firstName": "Hommer",
+      "lastName": "Simpson",
+      "username": "Hommer-Simpson",
+      "password": "$2a$10$xqu35Mpml3E0Tie87jqeW.wGYBPqEPnfJ0PUmOc6N/l8DTCnGSU5W",
+      "email": "hommer_simpson@yahoo.com.br",
+      "phoneNumber": "7648-4377",
+      "balance": 0,
+      "createdAt": "2025-04-28T22:07:31.265Z",
+      "modifiedAt": "2025-04-28T22:07:31.265Z"
+    },
+    {
+      "id": "onH9neaRl",
+      "uuid": "919fba1c-53fa-4ae4-9b60-a0ea53a53b5e",
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "username": "Marge-Simpson",
+      "password": "$2a$10$K8Qu/vS9cwwXf6JPEOuhfew607LPwMKwWuhxK5VOdSR7uv3P4MT1S",
+      "balance": 0,
+      "createdAt": "2025-05-03T17:57:23.900Z",
+      "modifiedAt": "2025-05-03T17:57:23.900Z"
     }
   ],
   "contacts": [
@@ -253,6 +277,61 @@
       "isDeleted": false,
       "createdAt": "2024-01-26T14:01:01.815Z",
       "modifiedAt": "2024-03-07T08:44:31.174Z"
+    },
+    {
+      "id": "ugijN6St2",
+      "uuid": "38b34ce4-dcb0-4718-8324-b1eaaf090c27",
+      "userId": "BdYMwSxn8",
+      "bankName": "BOS - First Bank of Springfield",
+      "accountNumber": "7648-4377",
+      "routingNumber": "17121989E",
+      "isDeleted": false,
+      "createdAt": "2025-04-28T22:13:06.227Z",
+      "modifiedAt": "2025-04-28T22:13:06.227Z"
+    },
+    {
+      "id": "mw4ohJw2k",
+      "uuid": "05c9e42f-4eca-4cd2-8179-ebd594af5336",
+      "userId": "onH9neaRl",
+      "bankName": "BOS - First Bank of Springfield",
+      "accountNumber": "4377-7648",
+      "routingNumber": "E19891712",
+      "isDeleted": false,
+      "createdAt": "2025-05-03T17:57:27.283Z",
+      "modifiedAt": "2025-05-03T17:57:27.283Z"
+    },
+    {
+      "id": "cC3Kd6swa",
+      "uuid": "84b792ea-a105-4e28-b287-988767583879",
+      "userId": "BdYMwSxn8",
+      "bankName": "BOS - First Bank of Springfield",
+      "accountNumber": "7648-4377",
+      "routingNumber": "17121989E",
+      "isDeleted": true,
+      "createdAt": "2025-05-03T18:08:10.417Z",
+      "modifiedAt": "2025-05-03T18:08:10.417Z"
+    },
+    {
+      "id": "DxARb7GIM",
+      "uuid": "d5e66bd8-d52a-4261-8e74-a8a04d66616a",
+      "userId": "BdYMwSxn8",
+      "bankName": "BOS - First Bank of Springfield",
+      "accountNumber": "7648-4377",
+      "routingNumber": "17121989E",
+      "isDeleted": false,
+      "createdAt": "2025-05-03T18:16:56.682Z",
+      "modifiedAt": "2025-05-03T18:16:56.682Z"
+    },
+    {
+      "id": "wmh05cda_",
+      "uuid": "11ac1101-269d-4d1d-8f8a-a66a7d239960",
+      "userId": "BdYMwSxn8",
+      "bankName": "BOS - First Bank of Springfield",
+      "accountNumber": "7648-4377",
+      "routingNumber": "17121989E",
+      "isDeleted": false,
+      "createdAt": "2025-05-03T18:17:06.876Z",
+      "modifiedAt": "2025-05-03T18:17:06.876Z"
     }
   ],
   "transactions": [

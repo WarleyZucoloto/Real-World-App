@@ -36,6 +36,12 @@ class LoginPage {
         if (username) this.userNameField.type(username)
         if (password) this.passwordField.type(password)
     }
+
+    loginSuccess(username, password) {
+        if (username) this.userNameField.type(username)
+        if (password) this.passwordField.type(password)
+        this.singInButton.click()
+    }
 }
 
 export default new LoginPage()

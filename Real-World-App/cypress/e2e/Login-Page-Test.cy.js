@@ -3,7 +3,7 @@ import dataAccess from "../fixtures/people-data.json"
 
 describe('Login Page Test', () => {
 
-  it('Login Successful', () => {
+  it('Login Successful', () => {  // Login bem-sucedido
     loginPage.visitLoginPage()
     loginPage.login(
         dataAccess.userHommer.userName,
@@ -13,7 +13,7 @@ describe('Login Page Test', () => {
     cy.contains('h6', 'Hommer').should('be.visible')
   })
 
-  it('Login Failed: Using Username Only', () => {
+  it('Login Failed: Using Username Only', () => {  // Falha no login: usando apenas nome de usuário
     loginPage.visitLoginPage()
     loginPage.login(
         dataAccess.userHommer.userName
@@ -22,7 +22,7 @@ describe('Login Page Test', () => {
     loginPage.singInButton.should('be.disabled')
   })
 
-  it ('Login Failed: Using Password Only', () => {
+  it ('Login Failed: Using Password Only', () => {  // Falha no login: usando apenas senha
     loginPage.visitLoginPage()
     loginPage.login(
         '',
@@ -33,7 +33,7 @@ describe('Login Page Test', () => {
     loginPage.userHelperAlert.should('be.visible')
   })
 
-  it ('Failed - Empty login and password', () =>{
+  it ('Failed - Empty login and password', () =>{  //Falha - Login e senha vazios
     loginPage.visitLoginPage()
     loginPage.singInButton.click()
     cy.location('pathname').should('include', 'signin')
@@ -41,7 +41,7 @@ describe('Login Page Test', () => {
     loginPage.userHelperAlert.should('be.visible')
   })
 
-  it ('Failed - Invalid login and password', () =>{
+  it ('Failed - Invalid login and password', () =>{  // Falha - Login e senha inválidos
     loginPage.visitLoginPage()
     loginPage.login(
         dataAccess.userHommerFail.userNameErro,
@@ -52,7 +52,7 @@ describe('Login Page Test', () => {
     loginPage.signInAlertError.should('be.visible')
   })
 
-  it ('Failed - Invalid password only', () =>{
+  it ('Failed - Invalid password only', () =>{  // Falha - Somente senha inválida
     loginPage.visitLoginPage()
     loginPage.login(
         dataAccess.userHommer.userName,
@@ -63,7 +63,7 @@ describe('Login Page Test', () => {
     loginPage.dataInvalid.should('be.visible')
   })
 
-  it ('Failed - Invalid login only', () =>{
+  it ('Failed - Invalid login only', () =>{  // Falha – Somente login inválido
     loginPage.visitLoginPage()
     loginPage.login(
         dataAccess.userHommerFail.userNameErro,
@@ -74,7 +74,7 @@ describe('Login Page Test', () => {
     loginPage.dataInvalid.should('be.visible')
   })
 
-  it ('Fault - Case sensitivity', () =>{
+  it ('Fault - Case sensitivity', () =>{  // Falha - Sensibilidade a maiúsculas e minúsculas
     loginPage.visitLoginPage()
     loginPage.login(
         dataAccess.userHommerFail.userHommerCaseSentive,
@@ -85,7 +85,7 @@ describe('Login Page Test', () => {
     loginPage.dataInvalid.should('be.visible')
   })
 
-  it ('Failed - User with case sensitive', () =>{
+  it ('Failed - User with case sensitive', () =>{  // Falha – Usuário com distinção entre maiúsculas e minúsculas
     loginPage.visitLoginPage()
     loginPage.login(
         dataAccess.userHommerFail.userHommerCaseSentive,
@@ -96,7 +96,7 @@ describe('Login Page Test', () => {
     loginPage.dataInvalid.should('be.visible')
   })
 
-  it ('Failed - Password with case sensitivity', () =>{
+  it ('Failed - Password with case sensitivity', () =>{  // Falha – Senha com distinção entre maiúsculas e minúsculas
     loginPage.visitLoginPage()
     loginPage.login(
         dataAccess.userHommer.userName,
