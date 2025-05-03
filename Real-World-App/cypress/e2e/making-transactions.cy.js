@@ -19,15 +19,15 @@ describe('Bank Transactions', () => {  // Transações Bancárias
       cy.location('pathname').should('include', 'transaction/new')
     })
   
-    // it('should create a valid bank transaction', () => {  // deve criar uma transação bancária válida
-    //   homePage.searchPeople.type(dataAccess.userMarge.firstName)
-    //   homePage.userListMarge.click()
-    //   homePage.amount.type('65')
-    //   homePage.description.type('Para comprar a fralda da Maggie')
-    //   homePage.payButton.click()
+    it('should create a valid bank transaction', () => {  // deve criar uma transação bancária válida
+      homePage.searchPeople.type(dataAccess.userMarge.firstName)
+      homePage.userListMarge.click()
+      homePage.amount.type('65')
+      homePage.description.type('Para comprar a fralda da Maggie')
+      homePage.payButton.click()
   
-    //   cy.contains('h2', 'Paid').should('be.visible')
-    // })
+      cy.contains('h2', 'Paid').should('be.visible')
+    })
   
     it('should not allow transaction with empty amount', () => {  // não deve permitir transação com quantia em branco
       homePage.searchPeople.type(dataAccess.userMarge.firstName)
@@ -37,36 +37,43 @@ describe('Bank Transactions', () => {  // Transações Bancárias
 
       cy.contains('p', 'Please enter a valid amount').should('be.visible')
       homePage.payButton.should('be.disabled')
+      homePage.requestButton.should('be.disabled')
 
     })
   
-//     it('should not allow transaction with amount 0', () => {  // não deve permitir transação com quantia igual a 0
-//       homePage.searchPeople.type(dataAccess.userMarge.firstName)
-//       homePage.userListMarge.click()
-//       homePage.amount.clear().type('0')
-//       homePage.description.type('Compra do leite')
+    it('should not allow transaction with amount 0', () => {  // não deve permitir transação com quantia igual a 0
+      homePage.searchPeople.type(dataAccess.userMarge.firstName)
+      homePage.userListMarge.click()
+      homePage.amount.clear().type('0')
+      homePage.description.type('Compra do leite')
 
-//       cy.contains('p', 'Please enter a valid amount').should('be.visible')
-//       homePage.payButton.should('be.desable')
-//     })
+      cy.contains('p', 'Quantity must be greater than 0').should('be.visible')
+      homePage.payButton.should('be.disabled')
+      homePage.requestButton.should('be.disabled')
+    })
   
-//     it('should not allow transaction with empty description', () => {  // não deve permitir transação com descrição vazia
-//       homePage.searchPeople.type(dataAccess.userMarge.firstName)
-//       homePage.userListMarge.click()
-//       homePage.amount.type('150')
-//       homePage.description.clear()
-  
-//       cy.contains('p', 'Please enter a note').should('be.visible')
-//       homePage.payButton.should('be.desable')
-//     })
-  
-//     it('should show error when description is missing even with valid amount', () => {  // deve mostrar erro ao tentar transação com valor válido, mas sem descrição
-//       homePage.searchPeople.type(dataAccess.userMarge.firstName)
-//       homePage.userListMarge.click()
-//       homePage.amount.clear().type('99')
-//       homePage.description.clear()
-  
-//       cy.contains('p', 'Please enter a note').should('be.visible')
-//       homePage.payButton.should('be.desable')
-//     })
+    it('should not allow transaction with empty description', () => {  // não deve permitir transação com descrição vazia
+      homePage.searchPeople.type(dataAccess.userMarge.firstName)
+      homePage.userListMarge.click()
+      homePage.amount.type('150')
+      homePage.description.clear()
+      homePage.amount.click();
+
+      cy.contains('p', 'Please enter a note').should('be.visible')
+      homePage.payButton.should('be.disabled')
+      homePage.requestButton.should('be.disabled')
+    })
+
+    it('should show error if account balance is not enough', () => {  // deve mostrar erro se o saldo da conta não for suficiente
+      homePage.searchPeople.type(dataAccess.userMarge.firstName)
+      homePage.userListMarge.click()
+      homePage.amount.type('1000000000') // valor alto, simulando saldo insuficiente
+      homePage.description.type('Tentando enviar mais do que tenho')
+
+      cy.contains('p', 'Please enter a note').should('be.visible')
+      homePage.payButton.should('be.disabled').click()
+      homePage.requestButton.should('be.disabled')
+      cy.contains('Saldo insuficiente').should('be.visible')
+    })
+    
   })

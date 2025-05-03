@@ -56,6 +56,21 @@ class HomePage {
         return cy.get("[data-test='transaction-create-submit-payment']")
     }
 
+    get dissmissButton () {
+        return cy.get("[data-test^='notification-mark-read']",  { timeout: 0, log: false})
+    }
 
+    get notNotifcatoins () {
+        return cy.get('h2.MuiTypography-root.MuiTypography-h6.MuiTypography-gutterBottom')
+    }
+
+    get accountBalance () {
+        return cy.get("[data-test='sidenav-user-balance']")
+    }
+
+    waitForNotifications() {
+        // Espera pela lista de notificações, ajustando o tempo para garantir que as notificações apareçam
+        cy.get('[data-test="notification-list"]', { timeout: 10000 }).should('exist').and('be.visible')
+    }
 }
 export default new HomePage ()
