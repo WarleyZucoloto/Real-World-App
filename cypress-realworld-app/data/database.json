@@ -95,7 +95,7 @@
       "lastName": "Simpson",
       "username": "Marge-Simpson",
       "password": "$2a$10$K8Qu/vS9cwwXf6JPEOuhfew607LPwMKwWuhxK5VOdSR7uv3P4MT1S",
-      "balance": 0,
+      "balance": 39100,
       "createdAt": "2025-05-03T17:57:23.900Z",
       "modifiedAt": "2025-05-03T17:57:23.900Z"
     }
@@ -9934,6 +9934,128 @@
       "requestResolvedAt": "",
       "createdAt": "2023-11-10T07:15:28.127Z",
       "modifiedAt": "2024-03-07T21:58:09.668Z"
+    },
+    {
+      "id": "aW9d4mdzX",
+      "uuid": "dd53e1d2-2b76-42ab-abfe-b75b3db39112",
+      "amount": 10000,
+      "description": "Para comprar a frauda da Maggie",
+      "receiverId": "M1ty1gR8B3",
+      "senderId": "BdYMwSxn8",
+      "status": "pending",
+      "requestStatus": "pending",
+      "createdAt": "2025-05-03T20:09:01.469Z",
+      "modifiedAt": "2025-05-03T20:09:01.469Z"
+    },
+    {
+      "id": "PAYr_lZZi",
+      "uuid": "eeec9ebd-d24d-4a20-82e6-bcaf966532eb",
+      "amount": 100,
+      "description": "teste",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:25:02.221Z",
+      "modifiedAt": "2025-05-03T20:25:02.221Z"
+    },
+    {
+      "id": "6NtSANfbP",
+      "uuid": "61c39d56-6cdc-49b2-b1ac-0c30f97ea10f",
+      "amount": 6500,
+      "description": "Para comprar a frauda da Maggie",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:26:47.994Z",
+      "modifiedAt": "2025-05-03T20:26:47.994Z"
+    },
+    {
+      "id": "pldKW2YEN",
+      "uuid": "f6619c5a-01eb-4750-9c76-a44901abbf1c",
+      "amount": 6500,
+      "description": "Para comprar a fralda da Maggie",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:43:24.426Z",
+      "modifiedAt": "2025-05-03T20:43:24.426Z"
+    },
+    {
+      "id": "m6-AiXY4y",
+      "uuid": "b325531e-0006-4b71-ab28-a0911bd916f6",
+      "amount": 0,
+      "description": "Compra do leite",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:43:37.071Z",
+      "modifiedAt": "2025-05-03T20:43:37.071Z"
+    },
+    {
+      "id": "QEdlsDCas",
+      "uuid": "8788071d-d71a-4953-8a6f-631900628fba",
+      "amount": 6500,
+      "description": "Para comprar a fralda da Maggie",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:44:42.695Z",
+      "modifiedAt": "2025-05-03T20:44:42.695Z"
+    },
+    {
+      "id": "dXjUwYT-R",
+      "uuid": "62204d2e-d8ef-47e7-8ab7-c11de4c75ce9",
+      "amount": 0,
+      "description": "Compra do leite",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:44:50.653Z",
+      "modifiedAt": "2025-05-03T20:44:50.653Z"
+    },
+    {
+      "id": "ki0rhA8nM",
+      "uuid": "86101667-b728-4f5a-932d-bd09e7ac8e82",
+      "amount": 6500,
+      "description": "Para comprar a fralda da Maggie",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:45:27.712Z",
+      "modifiedAt": "2025-05-03T20:45:27.712Z"
+    },
+    {
+      "id": "ZS243NscS",
+      "uuid": "2f0596dd-56fb-4e3b-acc0-288630267d5c",
+      "amount": 6500,
+      "description": "Para comprar a fralda da Maggie",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:45:51.621Z",
+      "modifiedAt": "2025-05-03T20:45:51.621Z"
+    },
+    {
+      "id": "wIJCIeW-X",
+      "uuid": "b5ea2d50-175e-4663-8b5d-48bf72564cd5",
+      "amount": 0,
+      "description": "Compra do lseite",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:46:04.312Z",
+      "modifiedAt": "2025-05-03T20:46:04.312Z"
+    },
+    {
+      "id": "DTCuLyrwS",
+      "uuid": "0561f2cb-5b2d-4be9-ba0a-065d72cf93e1",
+      "amount": 6500,
+      "description": "Para comprar a fralda da Maggie",
+      "receiverId": "onH9neaRl",
+      "senderId": "BdYMwSxn8",
+      "status": "complete",
+      "createdAt": "2025-05-03T20:47:27.918Z",
+      "modifiedAt": "2025-05-03T20:47:27.918Z"
     }
   ],
   "likes": [
@@ -10510,6 +10632,116 @@
       "isRead": false,
       "createdAt": "2024-02-01T18:53:45.699Z",
       "modifiedAt": "2024-03-07T17:13:52.110Z"
+    },
+    {
+      "id": "hSaM7da7B8",
+      "uuid": "e031e703-5165-4a36-bb27-d79e6574ce8b",
+      "userId": "M1ty1gR8B3",
+      "transactionId": "aW9d4mdzX",
+      "status": "requested",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:09:01.478Z",
+      "modifiedAt": "2025-05-03T20:09:01.478Z"
+    },
+    {
+      "id": "PSoXDFZ04F",
+      "uuid": "aa25e29e-a68f-4b11-a762-e23cee28aa47",
+      "userId": "onH9neaRl",
+      "transactionId": "PAYr_lZZi",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:25:02.294Z",
+      "modifiedAt": "2025-05-03T20:25:02.294Z"
+    },
+    {
+      "id": "MxeLTcTms1",
+      "uuid": "ccd0afd1-aa93-4bda-8a35-e1fff85e0da2",
+      "userId": "onH9neaRl",
+      "transactionId": "6NtSANfbP",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:26:48.025Z",
+      "modifiedAt": "2025-05-03T20:26:48.025Z"
+    },
+    {
+      "id": "W0F-kyDsOH",
+      "uuid": "6f48ff16-8a81-43f1-a19d-ee5805beb197",
+      "userId": "onH9neaRl",
+      "transactionId": "pldKW2YEN",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:43:24.452Z",
+      "modifiedAt": "2025-05-03T20:43:24.452Z"
+    },
+    {
+      "id": "WHeDtAG2qR",
+      "uuid": "7e65c1fa-a28a-421a-8c4f-ae1707a4c3ac",
+      "userId": "onH9neaRl",
+      "transactionId": "m6-AiXY4y",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:43:37.090Z",
+      "modifiedAt": "2025-05-03T20:43:37.090Z"
+    },
+    {
+      "id": "hZQBwzyJfh",
+      "uuid": "361571d8-3747-4eb7-88ee-b32b16a9fa2d",
+      "userId": "onH9neaRl",
+      "transactionId": "QEdlsDCas",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:44:42.719Z",
+      "modifiedAt": "2025-05-03T20:44:42.719Z"
+    },
+    {
+      "id": "yJi7pVTX-G",
+      "uuid": "5f4ebe57-3c10-4dcf-994f-bbeb811807fe",
+      "userId": "onH9neaRl",
+      "transactionId": "dXjUwYT-R",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:44:50.669Z",
+      "modifiedAt": "2025-05-03T20:44:50.669Z"
+    },
+    {
+      "id": "CfWz3LHBnQ",
+      "uuid": "137352ff-592b-4d0b-81e2-2d63deecd582",
+      "userId": "onH9neaRl",
+      "transactionId": "ki0rhA8nM",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:45:27.737Z",
+      "modifiedAt": "2025-05-03T20:45:27.737Z"
+    },
+    {
+      "id": "Q9glOboOre",
+      "uuid": "9f77777a-6a94-44ce-8942-d0b127869f21",
+      "userId": "onH9neaRl",
+      "transactionId": "ZS243NscS",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:45:51.645Z",
+      "modifiedAt": "2025-05-03T20:45:51.645Z"
+    },
+    {
+      "id": "UW6TH5Qrff",
+      "uuid": "9771a466-d514-4aae-bf66-73f5ea0409ec",
+      "userId": "onH9neaRl",
+      "transactionId": "wIJCIeW-X",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:46:04.332Z",
+      "modifiedAt": "2025-05-03T20:46:04.332Z"
+    },
+    {
+      "id": "VZ1L3hNtA8",
+      "uuid": "339d5b80-8cfd-455f-92c6-f97b88fd6323",
+      "userId": "onH9neaRl",
+      "transactionId": "DTCuLyrwS",
+      "status": "received",
+      "isRead": false,
+      "createdAt": "2025-05-03T20:47:27.939Z",
+      "modifiedAt": "2025-05-03T20:47:27.939Z"
     }
   ],
   "banktransfers": [
@@ -11062,6 +11294,76 @@
       "transactionId": "gaggAe7wNoiC",
       "createdAt": "2023-03-24T22:18:19.407Z",
       "modifiedAt": "2024-03-07T13:32:42.472Z"
+    },
+    {
+      "id": "wp3zvnmHyi",
+      "uuid": "131ee34c-dc91-4146-bdac-109d5c928c38",
+      "userId": "BdYMwSxn8",
+      "amount": 100,
+      "transactionId": "PAYr_lZZi",
+      "type": "withdrawal",
+      "createdAt": "2025-05-03T20:25:02.237Z",
+      "modifiedAt": "2025-05-03T20:25:02.237Z"
+    },
+    {
+      "id": "A5aJN2Im7g",
+      "uuid": "ae669219-f8cd-46e0-b9a5-fcff193c659e",
+      "userId": "BdYMwSxn8",
+      "amount": 6500,
+      "transactionId": "6NtSANfbP",
+      "type": "withdrawal",
+      "createdAt": "2025-05-03T20:26:47.998Z",
+      "modifiedAt": "2025-05-03T20:26:47.998Z"
+    },
+    {
+      "id": "SawoHLljTt",
+      "uuid": "e605afb5-12fb-45f0-adbc-8ce89b2febba",
+      "userId": "BdYMwSxn8",
+      "amount": 6500,
+      "transactionId": "pldKW2YEN",
+      "type": "withdrawal",
+      "createdAt": "2025-05-03T20:43:24.429Z",
+      "modifiedAt": "2025-05-03T20:43:24.429Z"
+    },
+    {
+      "id": "nY9AjDWKwX",
+      "uuid": "907b4f87-8e1d-4ee7-80c1-6a2b8feb186b",
+      "userId": "BdYMwSxn8",
+      "amount": 6500,
+      "transactionId": "QEdlsDCas",
+      "type": "withdrawal",
+      "createdAt": "2025-05-03T20:44:42.699Z",
+      "modifiedAt": "2025-05-03T20:44:42.699Z"
+    },
+    {
+      "id": "tCOt8bc5Zy",
+      "uuid": "c1299d88-dedc-4e35-9f06-03b22456d1cd",
+      "userId": "BdYMwSxn8",
+      "amount": 6500,
+      "transactionId": "ki0rhA8nM",
+      "type": "withdrawal",
+      "createdAt": "2025-05-03T20:45:27.715Z",
+      "modifiedAt": "2025-05-03T20:45:27.715Z"
+    },
+    {
+      "id": "0QYmcTr-Lv",
+      "uuid": "a8be6e26-17f2-4d4a-93b4-f119996b44c5",
+      "userId": "BdYMwSxn8",
+      "amount": 6500,
+      "transactionId": "ZS243NscS",
+      "type": "withdrawal",
+      "createdAt": "2025-05-03T20:45:51.626Z",
+      "modifiedAt": "2025-05-03T20:45:51.626Z"
+    },
+    {
+      "id": "1XSC85OghA",
+      "uuid": "baa83f0d-b7cb-48f4-bc98-842feea675c0",
+      "userId": "BdYMwSxn8",
+      "amount": 6500,
+      "transactionId": "DTCuLyrwS",
+      "type": "withdrawal",
+      "createdAt": "2025-05-03T20:47:27.922Z",
+      "modifiedAt": "2025-05-03T20:47:27.922Z"
     }
   ]
 }

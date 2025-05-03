@@ -1,39 +1,34 @@
 import loginPage from "../pages/login-page"
 import dataAccess from "../fixtures/people-data.json"
 
-describe('Login Page Test', () => {
+describe('Login Page Test', () => { // Teste de página de login
+  
+  const loginAndVerify = (username, password, expectedPath) => {
+    loginPage.visitLoginPage()
+    loginPage.login(username, password)
+    loginPage.singInButton.click()
+    cy.location('pathname').should('include', expectedPath)
+  }
 
   it('Login Successful', () => {  // Login bem-sucedido
     loginPage.visitLoginPage()
-    loginPage.login(
-        dataAccess.userHommer.userName,
-        dataAccess.userHommer.password
-    )
+    loginPage.login(dataAccess.userHommer.userName, dataAccess.userHommer.password)
     loginPage.singInButton.click()
     cy.contains('h6', 'Hommer').should('be.visible')
   })
 
   it('Login Failed: Using Username Only', () => {  // Falha no login: usando apenas nome de usuário
-    loginPage.visitLoginPage()
-    loginPage.login(
-        dataAccess.userHommer.userName
-    )
-    cy.location('pathname').should('include', 'signin')
+    loginAndVerify(dataAccess.userHommer.userName, '', 'signin')
     loginPage.singInButton.should('be.disabled')
   })
 
   it ('Login Failed: Using Password Only', () => {  // Falha no login: usando apenas senha
-    loginPage.visitLoginPage()
-    loginPage.login(
-        '',
-        dataAccess.userHommer.password
-    )
-    cy.location('pathname').should('include', 'signin')
+    loginAndVerify('', dataAccess.userHommer.password, 'signin')
     loginPage.singInButton.should('be.disabled')
     loginPage.userHelperAlert.should('be.visible')
   })
 
-  it ('Failed - Empty login and password', () =>{  //Falha - Login e senha vazios
+  it ('Failed - Empty login and password', () =>{  // Falha - Login e senha vazios
     loginPage.visitLoginPage()
     loginPage.singInButton.click()
     cy.location('pathname').should('include', 'signin')
@@ -52,59 +47,23 @@ describe('Login Page Test', () => {
     loginPage.signInAlertError.should('be.visible')
   })
 
-  it ('Failed - Invalid password only', () =>{  // Falha - Somente senha inválida
-    loginPage.visitLoginPage()
-    loginPage.login(
-        dataAccess.userHommer.userName,
-        dataAccess.userHommerFail.passwordErro
-    )
-    loginPage.singInButton.click()
-    cy.location('pathname').should('include', 'signin')
-    loginPage.dataInvalid.should('be.visible')
+  const invalidLoginTests = [
+    { user: dataAccess.userHommerFail.userNameErro, password: dataAccess.userHommer.password, alert: loginPage.dataInvalid },
+    { user: dataAccess.userHommer.userName, password: dataAccess.userHommerFail.passwordErro, alert: loginPage.dataInvalid },
+    { user: dataAccess.userHommerFail.userNameErro, password: dataAccess.userHommerFail.passwordErro, alert: loginPage.dataInvalid },
+    { user: dataAccess.userHommerFail.userHommerCaseSentive, password: dataAccess.userHommerFail.passwordCaseSensitive, alert: loginPage.dataInvalid },
+    { user: dataAccess.userHommerFail.userHommerCaseSentive, password: dataAccess.userHommer.password, alert: loginPage.dataInvalid },
+    { user: dataAccess.userHommer.userName, password: dataAccess.userHommerFail.passwordCaseSensitive, alert: loginPage.dataInvalid },
+  ]
+
+  invalidLoginTests.forEach(({ user, password, alert }) => {
+    it(`Failed - Invalid login/password combination: ${user} / ${password}`, () => {  // Falha – Combinacoes inválidas
+      loginPage.visitLoginPage()
+      loginPage.login(user, password)
+      loginPage.singInButton.click()
+      cy.location('pathname').should('include', 'signin')
+      alert.should('be.visible')
+    })
   })
 
-  it ('Failed - Invalid login only', () =>{  // Falha – Somente login inválido
-    loginPage.visitLoginPage()
-    loginPage.login(
-        dataAccess.userHommerFail.userNameErro,
-        dataAccess.userHommer.password
-    )
-    loginPage.singInButton.click()
-    cy.location('pathname').should('include', 'signin')
-    loginPage.dataInvalid.should('be.visible')
-  })
-
-  it ('Fault - Case sensitivity', () =>{  // Falha - Sensibilidade a maiúsculas e minúsculas
-    loginPage.visitLoginPage()
-    loginPage.login(
-        dataAccess.userHommerFail.userHommerCaseSentive,
-        dataAccess.userHommerFail.passwordCaseSensitive
-    )
-    loginPage.singInButton.click()
-    cy.location('pathname').should('include', 'signin')
-    loginPage.dataInvalid.should('be.visible')
-  })
-
-  it ('Failed - User with case sensitive', () =>{  // Falha – Usuário com distinção entre maiúsculas e minúsculas
-    loginPage.visitLoginPage()
-    loginPage.login(
-        dataAccess.userHommerFail.userHommerCaseSentive,
-        dataAccess.userHommer.password
-    )
-    loginPage.singInButton.click()
-    cy.location('pathname').should('include', 'signin')
-    loginPage.dataInvalid.should('be.visible')
-  })
-
-  it ('Failed - Password with case sensitivity', () =>{  // Falha – Senha com distinção entre maiúsculas e minúsculas
-    loginPage.visitLoginPage()
-    loginPage.login(
-        dataAccess.userHommer.userName,
-        dataAccess.userHommerFail.passwordCaseSensitive
-    )
-    loginPage.singInButton.click()
-    cy.location('pathname').should('include', 'signin')
-    loginPage.dataInvalid.should('be.visible')
-  })
-  
 })
