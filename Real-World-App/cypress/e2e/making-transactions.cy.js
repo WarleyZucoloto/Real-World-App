@@ -75,5 +75,4 @@ describe('Bank Transactions', () => {  // Transações Bancárias
       homePage.requestButton.should('be.disabled')
       cy.contains('Saldo insuficiente').should('be.visible')
     })
-    
   })

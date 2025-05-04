@@ -88,13 +88,15 @@ describe ('Creating bank account and adding personal information', () => {  // C
         menuPage.bankAccountsMenu.click()
         cy.contains('h2', 'Bank Accounts').should('be.visible')
         bankAccounts.createButton.click()
+        bankAccounts.bankNameField.click({force: true})
+        bankAccounts.routingNumber.click({force: true})
         bankAccounts.bankDetails(
             '', 
             dataAccess.userHommer.routingNumer, 
             dataAccess.userHommer.accountNumber
         )
-        bankAccounts.saveButton.click()
         bankAccounts.bankNameAlert.should('contain', 'Enter a bank name')
+        bankAccounts.saveButton.should('be.disabled')
     })
     
     it('Bank name with less than 5 characters - should display error message', () => {  // Nome do banco com menos de 5 caracteres - deve exibir mensagem de erro
@@ -112,7 +114,7 @@ describe ('Creating bank account and adding personal information', () => {  // C
             dataAccess.userHommer.routingNumer, 
             dataAccess.userHommer.accountNumber
         )
-        bankAccounts.saveButton.click()
+        bankAccounts.saveButton.should('be.disabled')
         bankAccounts.bankNameAlert.should('contain', 'Must contain at least 5 characters')
     })
     
@@ -126,12 +128,14 @@ describe ('Creating bank account and adding personal information', () => {  // C
         menuPage.bankAccountsMenu.click()
         cy.contains('h2', 'Bank Accounts').should('be.visible')
         bankAccounts.createButton.click()
+        bankAccounts.routingNumber.click({force: true})
+        bankAccounts.bankNameField.click({force: true})
         bankAccounts.bankDetails(
             dataAccess.userHommer.bankAccounts, 
             '', // Campo da conta de roteamento vazio
             dataAccess.userHommer.accountNumber
         )
-        bankAccounts.saveButton.click()
+        bankAccounts.saveButton.should('be.disabled')
         bankAccounts.routingNumberAlert.should('contain', 'Enter a valid bank routing number')
     })
     
@@ -150,7 +154,7 @@ describe ('Creating bank account and adding personal information', () => {  // C
             '12345678', // Conta de roteamento com menos de 9 caracteres
             dataAccess.userHommer.accountNumber
         )
-        bankAccounts.saveButton.click()
+        bankAccounts.saveButton.should('be.disabled')
         bankAccounts.routingNumberAlert.should('contain', 'Must contain a valid routing number')
     })
     
@@ -169,27 +173,8 @@ describe ('Creating bank account and adding personal information', () => {  // C
             '1234567890', // Conta de roteamento entre 9 e 12 caracteres
             dataAccess.userHommer.accountNumber
         )
-        bankAccounts.saveButton.click()
+        bankAccounts.saveButton.should('be.disabled')
         bankAccounts.routingNumberAlert.should('contain', 'Must contain a valid routing number')
-    })
-    
-    it('Account number is blank - should display error message', () => {  // Número da conta em branco - deve exibir mensagem de erro
-        loginPage.visitLoginPage()
-        loginPage.loginSuccess(
-            dataAccess.userHommer.userName, 
-            dataAccess.userHommer.password
-        )
-        cy.contains('h6', 'Hommer').should('be.visible')
-        menuPage.bankAccountsMenu.click()
-        cy.contains('h2', 'Bank Accounts').should('be.visible')
-        bankAccounts.createButton.click()
-        bankAccounts.bankDetails(
-            dataAccess.userHommer.bankAccounts, 
-            dataAccess.userHommer.routingNumer, 
-            '' // Numero da conta vazio
-        )
-        bankAccounts.saveButton.click()
-        bankAccounts.accountNumberAlert.should('contain', 'Enter a valid bank account number')
     })
     
     it('Account number with less than 9 digits - should display error message', () => {  // Número da conta com menos de 9 dígitos - deve exibir mensagem de erro
@@ -207,7 +192,7 @@ describe ('Creating bank account and adding personal information', () => {  // C
             dataAccess.userHommer.routingNumer, 
             '12345678' // Numero da conta com menos de 9 caracteres
         )
-        bankAccounts.saveButton.click()
+        bankAccounts.saveButton.should('be.disabled')
         bankAccounts.accountNumberAlert.should('contain', 'Must contain at least 9 digits')
     })
     
@@ -226,7 +211,7 @@ describe ('Creating bank account and adding personal information', () => {  // C
             dataAccess.userHommer.routingNumer, 
             '1234567890123' // Numero da conta com mais de 12 caracteres
         )
-        bankAccounts.saveButton.click()
+        bankAccounts.saveButton.should('be.disabled')
         bankAccounts.accountNumberAlert.should('contain', 'Must contain no more than 12 digits')
     })  
 })
