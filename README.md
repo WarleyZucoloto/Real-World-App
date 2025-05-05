@@ -1,32 +1,46 @@
-🧪 Exercícios de Fixação com Cypress - RealWorld App
-Este projeto tem como objetivo praticar e fixar conhecimentos em testes automatizados com Cypress, emulando um cenário simples de transações bancárias entre usuários.
+# 🧪 Testes E2E com Cypress – RealWorld App
 
-🎯 Objetivo
-Simular interações reais no app Cypress RealWorld como:
+Projeto criado para exercitar e fixar conhecimentos em testes automatizados com **Cypress**, simulando interações reais em um app bancário fictício.
 
-Login
-Criação de contas
-Realização de transações
-Validações de campos obrigatórios
-Tratamento de erros e mensagens
-🛠️ Tecnologias utilizadas
-Cypress – ferramenta principal de testes end-to-end
-JavaScript – linguagem dos testes
-VSCode – editor de código
-Node.js – ambiente de execução
-Obs.: Este projeto não utiliza framework adicional neste momento. A prioridade é fixar os conceitos base do Cypress.
+---
 
-📦 Como baixar o projeto original (Cypress RealWorld App)
-Para rodar os testes, é necessário clonar e executar o app localmente:
+## 🎯 Propósito
 
-# Clone o repositório original do RealWorld App
+Este repositório tem como foco principal:
+
+- Realizar login com diferentes cenários  
+- Criar contas e cadastrar usuários  
+- Executar transações bancárias entre usuários  
+- Validar campos obrigatórios  
+- Tratar erros e mensagens de retorno
+
+---
+
+## 🧰 Tecnologias
+
+- **Cypress** – testes end-to-end  
+- **JavaScript** – linguagem dos testes  
+- **Node.js** – ambiente de execução  
+- **VSCode** – editor de código utilizado  
+
+> ℹ️ Sem uso de frameworks adicionais: foco total nos fundamentos do Cypress.
+
+---
+
+## ▶️ Como rodar o projeto original (RealWorld App)
+
+Para executar os testes, é necessário clonar e subir o app localmente:
+
+```bash
+# Clone o projeto original
 git clone https://github.com/cypress-io/cypress-realworld-app.git
 
-# Acesse a pasta do projeto
+# Acesse o diretório
 cd cypress-realworld-app
 
 # Instale as dependências
 npm install
 
-# Rode a aplicação local
+# Inicie a aplicação
 npm start
+```
