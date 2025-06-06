@@ -1,51 +1,9 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Arquivos e diretórios gerados automaticamente, caches, logs e configurações locais.
 
-# dependencies
+# --- Dependências de Pacotes ---
 /node_modules
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.idea
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-cypress/videos
-cypress/screenshots
-.nyc_output
-
-# Ignore env local files - https://create-react-app.dev/docs/adding-custom-environment-variables/#what-other-env-files-can-be-used
-.env*.local
-
-#amplify
-amplify/\#current-cloud-backend
-amplify/.config/local-*
-amplify/mock-data
-amplify/team-provider-info.json
-amplify/backend/amplify-meta.json
-amplify/backend/awscloudformation
-build/
-dist/
-node_modules/
-aws-exports.js
-aws-exports-es5.js
-awsconfiguration.json
-amplifyconfiguration.json
-amplify-build-config.json
-amplify-gradle-config.json
-amplifytools.xcconfig
-
-# Yarn
-# See https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-# without zero installs
-.pnp.*
+/.pnp
+.pnp.js
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
@@ -53,7 +11,52 @@ amplifytools.xcconfig
 !.yarn/sdks
 !.yarn/versions
 
-cypress.env.json
-generate-hash.js
-Picture
+# --- Compilação e Saída de Build ---
+/build
+/dist
+# /public # Descomente esta linha SE 'public' for uma pasta gerada pelo processo de build (e não assets estáticos versionados)
 
+# --- Testes e Relatórios ---
+/coverage
+/cypress/videos/
+/cypress/screenshots/
+/cypress/downloads/ # Pasta de downloads do Cypress
+/mochawesome-report/ # Relatórios de teste gerados pelo Mochawesome
+.nyc_output # Saída de cobertura de código (NYC)
+
+# --- Arquivos de Ambiente e Configurações Sensíveis ---
+.env # Arquivo de variáveis de ambiente padrão
+.env*.local # Arquivos de variáveis de ambiente locais (ex: .env.development.local)
+cypress.env.json
+
+# --- Arquivos de Log e Temporários ---
+*.log # Qualquer arquivo com extensão .log
+*.tmp # Arquivos temporários
+*.bak # Arquivos de backup
+/tmp/ # Pasta temporária
+
+# --- Arquivos de Sistema Operacional ---
+.DS_Store # Gerado pelo macOS
+Thumbs.db # Gerado pelo Windows
+
+# --- Arquivos de Debug/Cache do NPM/Yarn ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- AWS Amplify (Arquivos Gerados/Locais) ---
+amplify/#current-cloud-backend
+amplify/.config/local-*
+amplify/mock-data
+amplify/team-provider-info.json
+amplify/backend/amplify-meta.json
+amplify/backend/awscloudformation
+aws-exports.js
+aws-exports-es5.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplify-build-config.json
+amplify-gradle-config.json
+amplifytools.xcconfig
+generate-hash.js
+Picture 
