@@ -35,6 +35,11 @@ cypress.env.json
 *.bak # Arquivos de backup
 /tmp/ # Pasta temporária
 
+# --- Dados (Gerados ou de Teste/Mock) ---
+/data/seed.json
+/data/data.json
+/data/empty-data.json
+
 # --- Arquivos de Sistema Operacional ---
 .DS_Store # Gerado pelo macOS
 Thumbs.db # Gerado pelo Windows
