@@ -1,6 +1,6 @@
 # 🛡️ Real World App - Testes Automatizados com Cypress
 
-![Real World App](./Picture/rwa-readme-screenshot.png)
+![Real World App](./Pictures/Real_World_App.jpg)
 
 ![Cypress Logo](https://img.shields.io/badge/Cypress-10.0.0-green?style=for-the-badge&logo=cypress&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript&logoColor=black)
