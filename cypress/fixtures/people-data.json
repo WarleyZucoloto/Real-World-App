@@ -1,0 +1,40 @@
+{
+  "userHommer": {
+    "userName": "Hommer-Simpson",
+    "firstName": "Hommer",
+    "lastName": "Simpson",
+    "email": "hommer_simpson@yahoo.com.br",
+    "phoneNumber": "7648-4377",
+    "bankAccounts": "BOS - First Bank of Springfield",
+    "routingNumer": "17121989E",
+    "accountNumber": "7648-4377"
+  },
+
+  "userMarge": {
+    "userName": "Marge-Simpson",
+    "firstName": "Marge",
+    "lastName": "Simpson",
+    "email": "Marge_simpson@yahoo.com.br",
+    "phoneNumber": "4377-7648",
+    "bankAccounts": "BOS - First Bank of Springfield",
+    "routingNumber": "E19891712",
+    "accountNumber": "4377-7648"
+  },
+
+  "userLisa": {
+    "userName": "Lisa-Simpson",
+    "firstName": "Lisa",
+    "lastName": "Simpson",
+    "email": "Lisa_simpson@yahoo.com.br",
+    "phoneNumber": "4377-7648",
+    "bankAccounts": "BOS - First Bank of Springfield",
+    "routingNumber": "L19891712",
+    "accountNumber": "4377-4377"
+  },
+
+  "userHommerFail": {
+    "userNameErro": "Hommer_Simpson1",
+    "userHommerCaseSentive": "hommer-simpson",
+    "passwordCaseSensitive": "Hommer123"
+  }
+}

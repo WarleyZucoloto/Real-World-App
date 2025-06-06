@@ -1,90 +1,100 @@
-# 🧪 Testes E2E com Cypress – Explorando o RealWorld App 💸
+# 🛡️ Real World App - Testes Automatizados com Cypress
 
-Bem-vindo(a) ao meu projeto de testes automatizados! Este repositório é dedicado a exercitar e consolidar conhecimentos em testes End-to-End (E2E) utilizando o **Cypress**[cite: 16]. Aqui, simulamos interações reais em um aplicativo bancário fictício, o **RealWorld App**, para garantir que as funcionalidades operem como esperado e proporcionar uma experiência de usuário impecável[cite: 15].
+![Real World App](./Picture/rwa-readme-screenshot.png)
+
+![Cypress Logo](https://img.shields.io/badge/Cypress-10.0.0-green?style=for-the-badge&logo=cypress&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-v18+-brightgreen?style=for-the-badge&logo=node.js&logoColor=white)
+---
+
+Este repositório contém a suíte de testes automatizados End-to-End para a aplicação "Real World App" (RWA), desenvolvida utilizando o **Cypress**. O objetivo é garantir a qualidade e o bom funcionamento das principais funcionalidades da aplicação, como autenticação, gerenciamento de contas bancárias, transações e perfis de usuário.
 
 ---
 
-## 🚀 O Que Você Encontrará Aqui?
+## ✨ Funcionalidades Testadas
 
-Este projeto foi desenhado para te ajudar a entender e visualizar na prática diversos cenários de teste, com foco em:
+Os testes automatizados cobrem os seguintes cenários:
 
-* **Login Descomplicado**: Testamos diferentes situações de login[cite: 16], desde o sucesso até as falhas propositais, para garantir que apenas os usuários corretos tenham acesso.
-* **Gestão de Contas e Usuários**: Cenários que abordam a criação de novas contas e o cadastro de usuários no sistema[cite: 16].
-* **Transações Bancárias Seguras**: Verificamos a execução de transações financeiras entre usuários, simulando operações do dia a dia[cite: 16].
-* **Validação de Campos Essenciais**: Testamos a obrigatoriedade dos campos, evitando que dados importantes sejam omitidos[cite: 16].
-* **Tratamento de Erros Eficaz**: Verificamos como o sistema lida com erros e as mensagens de retorno para o usuário[cite: 16].
+1.  **Autenticação de Usuários**
+    * Registro de novos usuários (Sign Up) com dados válidos e validação de campos.
+    * Login bem-sucedido com credenciais válidas.
+    * Falhas de login:
+        * Tentativas de login com usuário inexistente.
+        * Senhas incorretas.
+        * Campos de usuário/senha em branco.
+    * Recuperação de senha.
+
+2.  **Gerenciamento de Contas Bancárias**
+    * Criação bem-sucedida de novas contas bancárias com dados válidos.
+    * Validação de campos obrigatórios e formato (ex: nome do banco em branco, números de roteamento/conta inválidos).
+    * Exclusão de contas bancárias existentes.
+
+3.  **Transações Financeiras**
+    * Criação de transações peer-to-peer (P2P) entre usuários.
+    * Criação de transações para "request" (pedidos de pagamento).
+    * Visualização e filtro do histórico de transações.
+
+4.  **Gerenciamento de Perfil**
+    * Visualização e edição das informações do perfil do usuário.
+    * Atualização de senhas.
+
+5.  **Notificações**
+    * Marcação de notificações como lidas.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* **Cypress**: Framework de automação de testes End-to-End.
+* **JavaScript**: Linguagem de programação.
+* **Node.js**: Ambiente de execução para o JavaScript (necessário para o Cypress e npm).
+* **npm / Yarn**: Gerenciador de pacotes.
 
 ---
 
-## 🛠️ Ferramentas Utilizadas
+## 🚀 Como Rodar os Testes
 
-Para construir e executar esses testes, contamos com as seguintes tecnologias:
+### Pré-requisitos
 
-* **Cypress**: O framework de testes end-to-end [cite: 17] que nos permite simular as interações do usuário de forma robusta e confiável.
-* **JavaScript**: A linguagem de programação que utilizamos para escrever nossos testes[cite: 17], tornando-os flexíveis e poderosos.
-* **Node.js**: O ambiente de execução [cite: 17] que permite rodar o JavaScript fora do navegador.
-* **VSCode**: Nosso editor de código preferido[cite: 17], para um desenvolvimento ágil e organizado.
+Certifique-se de ter o **Node.js** (versão 18 ou superior recomendada) e o **npm** (que vem com o Node.js) ou **Yarn** instalados em sua máquina.
 
-> 💡 **Foco nos Fundamentos**: Optamos por não utilizar frameworks adicionais, garantindo que o aprendizado e a prática se concentrem totalmente nos fundamentos do Cypress [cite: 17] e na lógica de testes.
+### 1. Configuração do Projeto
 
----
+Este repositório já inclui tanto a aplicação "Real World App" quanto a suíte de testes Cypress.
 
-## ▶️ Como Rodar este Projeto (e o RealWorld App!)
-
-Para que você possa explorar e rodar os testes deste repositório, é fundamental ter o **RealWorld App** (a aplicação que estamos testando) rodando localmente. Siga os passos abaixo:
-
-1.  **Clone o Projeto Original (RealWorld App):**
-    Primeiro, você precisará clonar o repositório da aplicação que será testada. Acesse o link oficial do projeto: [cypress-io/cypress-realworld-app](https://github.com/cypress-io/cypress-realworld-app) e clone-o para sua máquina[cite: 17].
-
+1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/cypress-io/cypress-realworld-app.git](https://github.com/cypress-io/cypress-realworld-app.git)
+    git clone [https://github.com/WarleyZucoloto/RealWorldApp.git](https://github.com/WarleyZucoloto/RealWorldApp.git) # Substitua pelo URL real do seu repositório
+    cd RealWorldApp
     ```
 
-2.  **Navegue até o Diretório do RealWorld App:**
-
+2.  **Instale as dependências da aplicação e dos testes:**
     ```bash
-    cd cypress-realworld-app
+    npm install # ou yarn install
     ```
 
-3.  **Instale as Dependências do RealWorld App:**
+### 2. Iniciar a Aplicação (Backend e Frontend)
 
-    ```bash
-    npm install
-    ```
+Para rodar os testes, a aplicação RWA precisa estar em execução. O projeto RWA geralmente tem um comando unificado para iniciar tanto o backend (API) quanto o frontend.
 
-4.  **Inicie a Aplicação RealWorld App (Localmente):**
-    Com as dependências instaladas, você pode iniciar o servidor da aplicação[cite: 17].
+```bash
+npm start # ou npm run dev, se este for o comando para iniciar ambos
 
-    ```bash
-    npm start
-    ```
-    Isso fará com que o RealWorld App esteja disponível localmente, geralmente em `http://localhost:8080` (verifique a saída do seu terminal para a porta exata).
+## 🚀 Integração Contínua (CI/CD)
 
-5.  **Agora, Clone ESTE Repositório (Seus Testes!):**
-    Em um novo terminal, clone o seu repositório de testes.
+Este projeto utiliza **GitHub Actions** para automatizar a execução dos testes End-to-End. A cada novo `push` para a branch principal (`main`) ou a cada `pull request` aberto, um pipeline de CI/CD é automaticamente acionado para:
 
-    ```bash
-    git clone SEU_LINK_DO_REPOSITORIO_AQUI.git
-    ```
+* Configurar o ambiente de execução.
+* Instalar as dependências do projeto e do Cypress.
+* Iniciar a aplicação (backend e frontend).
+* Executar toda a suíte de testes Cypress em um ambiente headless.
 
-6.  **Navegue até o Diretório dos Seus Testes:**
+Isso garante que qualquer nova alteração no código seja validada automaticamente, identificando regressões e mantendo a qualidade da aplicação e dos testes de forma contínua.
 
-    ```bash
-    cd SEU_DIRETORIO_DE_TESTES_AQUI
-    ```
+Você pode acompanhar o status das execuções e ver os logs detalhados dos testes na aba [Actions](https://github.com/WarleyZucoloto/RealWorldApp/actions) do repositório.
 
-7.  **Instale as Dependências Deste Projeto (Cypress):**
+## 📞 Contato
 
-    ```bash
-    npm install
-    ```
-
-8.  **Execute os Testes Cypress!**
-    Com o RealWorld App rodando e as dependências dos testes instaladas, você pode finalmente executar os testes:
-
-    ```bash
-    npx cypress open
-    ```
-    Isso abrirá a interface do Cypress, onde você poderá selecionar e rodar os testes individualmente ou em conjunto.
-
----
+* **Nome:** Warley Zucoloto
+* **LinkedIn:** [https://www.linkedin.com/in/warleydomingueszucoloto](https://www.linkedin.com/in/warleydomingueszucoloto/)
+* **GitHub:** [https://github.com/WarleyZucoloto](https://github.com/WarleyZucoloto)
