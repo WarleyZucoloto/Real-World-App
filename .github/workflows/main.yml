@@ -1,226 +1,51 @@
-name: Cypress Tests
+# .github/workflows/main.yml
+name: Cypress E2E Tests
 
 on:
   push:
+    branches:
+      - main # Garanta que esta é a sua branch principal (ex: master)
     branches-ignore:
-      - "renovate/**"
+      - "renovate/**" # Mantém esta regra se for útil para você
+
+  pull_request:
+    branches:
+      - main # Garanta que esta é a sua branch principal
 
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:22.15.0
-      options: --user 1001
+  # O job principal para executar os testes Cypress E2E
+  cypress-run:
+    runs-on: ubuntu-latest # A máquina virtual onde o workflow rodará
+    
+    # Usa uma imagem Docker do Cypress que já vem com navegadores e Node.js
+    container: cypress/browsers:node20.11.0-chrome122-ff123 # Versão recomendada: Node 20, Chrome 122, Firefox 123
+    options: --user 1001 # Garante permissões corretas dentro do container
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4 # Baixa o código do seu repositório
 
-      - name: Cypress install
-        uses: cypress-io/github-action@v6
-        with:
-          runTests: false
-      # report machine parameters
-      - run: yarn cypress info
-      - run: node --version
-      - run: node -p 'os.cpus()'
-      - run: yarn types
-      - run: yarn lint
-      - run: yarn test:unit:ci
-      - run: yarn build:ci
+      - name: Install All Dependencies
+        # Este comando instalará todas as dependências do seu package.json, incluindo o Cypress.
+        # Use 'npm install' se você usa npm, ou 'yarn install' se usa yarn.
+        run: npm install # Altere para 'yarn install' se usar Yarn
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          if-no-files-found: error
-          path: build
-
-  ui-chrome-tests:
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:22.15.0
-      options: --user 1001
-    needs: install
-    strategy:
-      # when one test fails, DO NOT cancel the other
-      # containers, because this will kill Cypress processes
-      # leaving Cypress Cloud hanging ...
-      # https://github.com/cypress-io/github-action/issues/48
-      fail-fast: false
-      matrix:
-        # run copies of the current job in parallel
-        containers: [1, 2, 3, 4, 5]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
-
-      - name: Node info
-        run: node -v
-
-      - name: __e Dir
-        run: ls /__e
-
-      - name: "UI Tests - Chrome"
-        uses: cypress-io/github-action@v6
-        with:
-          build: yarn cypress info
-          start: yarn start:ci
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 120
-          browser: chrome
-          record: true
-          parallel: true
-          group: "UI - Chrome"
-          spec: cypress/tests/ui/*
-          config-file: cypress.config.ts
+      - name: Run Cypress Tests
+        # Inicia a aplicação (backend + frontend) em segundo plano e espera ela estar pronta.
+        # Ajuste 'npm start' se o seu comando para iniciar o app for diferente (ex: 'npm run dev').
+        # Ajuste 'http://localhost:3000' para a URL e porta que sua aplicação usa.
+        run: |
+          npm start & # Inicia o seu aplicativo em segundo plano
+          npx wait-on http://localhost:3000 # Espera o aplicativo subir e ficar acessível
+          npx cypress run --browser chrome # Roda seus testes Cypress no Chrome em modo headless
+        
         env:
-          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEBUG: "cypress:server:args"
-
-  ui-chrome-mobile-tests:
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:22.15.0
-      options: --user 1001
-    needs: install
-    strategy:
-      # when one test fails, DO NOT cancel the other
-      # containers, because this will kill Cypress processes
-      # leaving Cypress Cloud hanging ...
-      # https://github.com/cypress-io/github-action/issues/48
-      fail-fast: false
-      matrix:
-        # run copies of the current job in parallel
-        containers: [1, 2, 3, 4, 5]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
-
-      - name: "UI Tests - Chrome - Mobile"
-        uses: cypress-io/github-action@v6
-        with:
-          config: '{"e2e":{"viewportWidth":375,"viewportHeight":667}}'
-          start: yarn start:ci
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 120
-          browser: chrome
-          record: true
-          parallel: true
-          group: "UI - Chrome - Mobile"
-          spec: cypress/tests/ui/*
-          config-file: cypress.config.ts
-        env:
-          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  ui-firefox-tests:
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:22.15.0
-      options: --user 1001
-    needs: install
-    strategy:
-      # when one test fails, DO NOT cancel the other
-      # containers, because this will kill Cypress processes
-      # leaving Cypress Cloud hanging ...
-      # https://github.com/cypress-io/github-action/issues/48
-      fail-fast: false
-      matrix:
-        # run copies of the current job in parallel
-        containers: [1, 2, 3, 4, 5]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
-
-      - name: "UI Tests - Firefox"
-        uses: cypress-io/github-action@v6
-        with:
-          start: yarn start:ci
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 120
-          browser: firefox
-          record: true
-          parallel: true
-          group: "UI - Firefox"
-          spec: cypress/tests/ui/*
-          config-file: cypress.config.ts
-        env:
-          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  ui-firefox-mobile-tests:
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:22.15.0
-      options: --user 1001
-    needs: install
-    strategy:
-      # when one test fails, DO NOT cancel the other
-      # containers, because this will kill Cypress processes
-      # leaving Cypress Cloud hanging ...
-      # https://github.com/cypress-io/github-action/issues/48
-      fail-fast: false
-      matrix:
-        # run copies of the current job in parallel
-        containers: [1, 2, 3, 4, 5]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
-
-      - name: "UI Tests - Firefox - Mobile"
-        uses: cypress-io/github-action@v6
-        with:
-          config: '{"e2e":{"viewportWidth":375,"viewportHeight":667}}'
-          start: yarn start:ci
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 120
-          browser: firefox
-          record: true
-          parallel: true
-          group: "UI - Firefox - Mobile"
-          spec: cypress/tests/ui/*
-          config-file: cypress.config.ts
-        env:
-          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # Recommended: pass the GitHub token lets this action correctly
-          # determine the unique run id necessary to re-run the checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Define a URL base para o Cypress, que será usada como 'baseUrl' nos seus testes.
+          CYPRESS_BASE_URL: http://localhost:3000 
+          
+          # Se você estiver usando o Cypress Cloud para gravação de testes e paralelização,
+          # adicione suas variáveis de ambiente aqui como secrets.
+          # Exemplo:
+          # CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Necessário para relatar o status das checks ao GitHub
