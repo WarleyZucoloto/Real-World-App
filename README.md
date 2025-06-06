@@ -80,6 +80,8 @@ Para rodar os testes, a aplicação RWA precisa estar em execução. O projeto R
 ```bash
 npm start # ou npm run dev, se este for o comando para iniciar ambos
 
+```
+
 ## 🚀 Integração Contínua (CI/CD)
 
 Este projeto utiliza **GitHub Actions** para automatizar a execução dos testes End-to-End. A cada novo `push` para a branch principal (`main`) ou a cada `pull request` aberto, um pipeline de CI/CD é automaticamente acionado para:
