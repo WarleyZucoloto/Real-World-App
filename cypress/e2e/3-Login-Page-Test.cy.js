@@ -9,11 +9,11 @@ describe('Login Page Test', () => { // Teste de página de login
     loginPage.login(username, password)
 
     if (!assertButtonDisabled) {
-        loginPage.singInButton.click()
+      loginPage.singInButton.click()
     }
     cy.location('pathname').should('include', expectedPath)
     if (assertButtonDisabled) {
-        loginPage.singInButton.should('be.disabled')
+      loginPage.singInButton.should('be.disabled')
     }
     expectedAlertElement.should('be.visible')
   }
@@ -31,24 +31,24 @@ describe('Login Page Test', () => { // Teste de página de login
   it('Login Failed: Using Username Only', () => { // Falha no login: usando apenas nome de usuário
 
     assertLoginFailure(
-        dataAccess.userHommer.userName,
-        '', // Senha vazia
-        'signin',
-        loginPage.passwordHelperAlert
+      dataAccess.userHommer.userName,
+      '', // Senha vazia
+      'signin',
+      loginPage.passwordHelperAlert
     )
   })
 
-  it ('Login Failed: Using Password Only', () => { // Falha no login: usando apenas senha
+  it('Login Failed: Using Password Only', () => { // Falha no login: usando apenas senha
 
     assertLoginFailure(
-        '', // Usuário vazio
-        Cypress.env('hommerPassword'), // Senha do Hommer via Cypress.env
-        'signin',
-        loginPage.userHelperAlert
+      '', // Usuário vazio
+      Cypress.env('hommerPassword'), // Senha do Hommer via Cypress.env
+      'signin',
+      loginPage.userHelperAlert
     )
   })
 
-  it ('Failed - Empty login and password', () => { // Falha - Login e senha vazios
+  it('Failed - Empty login and password', () => { // Falha - Login e senha vazios
 
     loginPage.visitLoginPage()
     loginPage.singInButton.click()
@@ -58,12 +58,12 @@ describe('Login Page Test', () => { // Teste de página de login
     loginPage.passwordHelperAlert.should('be.visible')
   })
 
-  it ('Failed - Invalid login and password', () => { // Falha - Login e senha inválidos
+  it('Failed - Invalid login and password', () => { // Falha - Login e senha inválidos
 
     loginPage.visitLoginPage()
     loginPage.login(
-        dataAccess.userHommerFail.userNameErro,
-        Cypress.env('hommerFailPasswordErro') // Senha de erro do Hommer via Cypress.env
+      dataAccess.userHommerFail.userNameErro,
+      Cypress.env('hommerFailPasswordErro') // Senha de erro do Hommer via Cypress.env
     )
     loginPage.singInButton.click()
 

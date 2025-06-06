@@ -27,7 +27,7 @@ describe('User Account Creation Tests', () => { // Testes de Criação de Conta 
     cy.loginApp(
       dataAccess.userMarge.userName,
       Cypress.env('margePassword'),
-      dataAccess.userMarge.firstName 
+      dataAccess.userMarge.firstName
     )
     cy.contains('h2', 'Get Started with Real World App').should('be.visible')
   })

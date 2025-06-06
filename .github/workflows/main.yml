@@ -1,51 +1,64 @@
-# .github/workflows/main.yml
 name: Cypress E2E Tests
 
 on:
   push:
     branches:
-      - main # Garanta que esta é a sua branch principal (ex: master)
-    branches-ignore:
-      - "renovate/**" # Mantém esta regra se for útil para você
-
+      - main
   pull_request:
     branches:
-      - main # Garanta que esta é a sua branch principal
+      - main
 
 jobs:
-  # O job principal para executar os testes Cypress E2E
   cypress-run:
-    runs-on: ubuntu-latest # A máquina virtual onde o workflow rodará
-    
-    # Usa uma imagem Docker do Cypress que já vem com navegadores e Node.js
-    container: cypress/browsers:node20.11.0-chrome122-ff123 # Versão recomendada: Node 20, Chrome 122, Firefox 123
-    options: --user 1001 # Garante permissões corretas dentro do container
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/included:13.11.0
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4 # Baixa o código do seu repositório
+        uses: actions/checkout@v4
 
-      - name: Install All Dependencies
-        # Este comando instalará todas as dependências do seu package.json, incluindo o Cypress.
-        # Use 'npm install' se você usa npm, ou 'yarn install' se usa yarn.
-        run: npm install # Altere para 'yarn install' se usar Yarn
-
-      - name: Run Cypress Tests
-        # Inicia a aplicação (backend + frontend) em segundo plano e espera ela estar pronta.
-        # Ajuste 'npm start' se o seu comando para iniciar o app for diferente (ex: 'npm run dev').
-        # Ajuste 'http://localhost:3000' para a URL e porta que sua aplicação usa.
+      - name: Setup Environment (Add Yarn to PATH)
         run: |
-          npm start & # Inicia o seu aplicativo em segundo plano
-          npx wait-on http://localhost:3000 # Espera o aplicativo subir e ficar acessível
-          npx cypress run --browser chrome # Roda seus testes Cypress no Chrome em modo headless
-        
-        env:
-          # Define a URL base para o Cypress, que será usada como 'baseUrl' nos seus testes.
-          CYPRESS_BASE_URL: http://localhost:3000 
+          echo "/usr/local/bin" >> $GITHUB_PATH
+          # Nota: A verificação "if command -v yarn" e o "echo Updated PATH" foram removidos para simplificar.
+          # Presumimos que funcionou com sucesso. Se der problema no futuro, reintroduzir.
+
+      - name: Install curl in container
+        run: |
+          apt-get update && apt-get install -y curl
+
+      - name: Install Dependencies
+        run: yarn install --legacy-peer-deps
+
+      - name: Start Application and Backend
+        run: |
+          echo "Starting application and backend in background..."
+          # Inicia o app em background. A saída vai para app_logs.log
+          nohup bash -c "yarn dev" > app_logs.log 2>&1 &
           
-          # Se você estiver usando o Cypress Cloud para gravação de testes e paralelização,
-          # adicione suas variáveis de ambiente aqui como secrets.
-          # Exemplo:
-          # CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Necessário para relatar o status das checks ao GitHub
+          echo "Waiting for frontend to be available at http://localhost:3000 (up to 5 minutes)..."
+          # Permanece com um retry longo para garantir a inicialização completa.
+          curl -s --head --fail http://localhost:3000 --retry 60 --retry-delay 5 || {
+            echo "Frontend did not become available within timeout!";
+            echo "--- Application Logs (from yarn dev) ---";
+            # Mantém um sleep para garantir que o log seja escrito antes de ser lido em caso de falha.
+            sleep 15 
+            if [ -s app_logs.log ]; then
+              cat app_logs.log;
+            else
+              echo "app_logs.log is empty or does not exist."
+            fi
+            echo "--- End Application Logs ---"
+            exit 1;
+          }
+
+          echo "Frontend is up. Giving it a few more seconds to fully load before tests..."
+          sleep 15 
+          echo "Ready to run Cypress tests."
+
+      - name: Run Cypress E2E Tests
+        run: npx cypress run
+        
+    env:
+      CYPRESS_BASE_URL: http://localhost:3000

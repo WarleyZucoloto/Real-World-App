@@ -71,7 +71,7 @@ describe('Bank Transactions', () => { // Transações Bancárias
     })
 
     it('should show error if account balance is not enough', () => { // deve mostrar erro se o saldo da conta não for suficiente
-      
+
         homePage.searchPeople.type(dataAccess.userLisa.firstName)
         homePage.userListLisa.click()
         homePage.amount.type('1000000000') // valor alto, simulando saldo insuficiente

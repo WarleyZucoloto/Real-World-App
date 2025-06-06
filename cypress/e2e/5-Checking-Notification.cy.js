@@ -4,18 +4,18 @@ import '../support/commands' // Certifique-se de que esta linha está presente p
 
 beforeEach(() => {
 
-    cy.loginApp(
-      dataAccess.userHommer.userName,
-      Cypress.env('hommerPassword'),
-      dataAccess.userHommer.firstName
-    )
+  cy.loginApp(
+    dataAccess.userHommer.userName,
+    Cypress.env('hommerPassword'),
+    dataAccess.userHommer.firstName
+  )
 
-    cy.contains('h6', 'Hommer').should('be.visible').click()
-    homePage.newTransaction.click()
-    cy.location('pathname').should('include', 'transaction/new')
-  })
+  cy.contains('h6', 'Hommer').should('be.visible').click()
+  homePage.newTransaction.click()
+  cy.location('pathname').should('include', 'transaction/new')
+})
 
-describe ('Checking and reading my notifications', () => { // Checando e lendo minhas notificações
+describe('Checking and reading my notifications', () => { // Checando e lendo minhas notificações
 
   it('my notifications', () => { // minhas notificações
     cy.get('span.MuiBadge-badge').then($badge => {

@@ -78,7 +78,14 @@ Este repositório já inclui tanto a aplicação "Real World App" quanto a suít
 Para rodar os testes, a aplicação RWA precisa estar em execução. O projeto RWA geralmente tem um comando unificado para iniciar tanto o backend (API) quanto o frontend.
 
 ```bash
-npm start # ou npm run dev, se este for o comando para iniciar ambos
+yarn dev # isso iniciiniciará a do Real World App
+
+```
+
+### 3. Iniciar os testes com Cypress
+
+```bash
+npx cypress open # isso iniciiniciará a aplicação cypress para teste e2e
 
 ```
 
@@ -100,3 +107,5 @@ Você pode acompanhar o status das execuções e ver os logs detalhados dos test
 * **Nome:** Warley Zucoloto
 * **LinkedIn:** [https://www.linkedin.com/in/warleydomingueszucoloto](https://www.linkedin.com/in/warleydomingueszucoloto/)
 * **GitHub:** [https://github.com/WarleyZucoloto](https://github.com/WarleyZucoloto)
+
+<!-- end list -->
