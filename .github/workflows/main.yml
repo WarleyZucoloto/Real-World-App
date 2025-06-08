@@ -36,6 +36,8 @@ jobs:
           echo "Starting application and backend in background..."
           # Inicia o app em background. A saída vai para app_logs.log
           nohup bash -c "yarn dev" > app_logs.log 2>&1 &
+
+          sleep 20
           
           echo "Waiting for frontend to be available at http://localhost:3000 (up to 5 minutes)..."
           # Permanece com um retry longo para garantir a inicialização completa.
