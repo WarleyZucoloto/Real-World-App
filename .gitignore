@@ -65,3 +65,4 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 /generate-hash.js
 node_modules
+.nyc_output
