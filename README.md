@@ -43,6 +43,16 @@ Os testes automatizados cobrem os seguintes cenários:
 
 ---
 
+## 📊 Resultados Detalhados dos Testes E2E
+
+Para uma análise completa e aprofundada dos resultados dos testes automatizados End-to-End, incluindo o propósito de cada suíte, o ambiente de execução, cenários testados, **critérios de aceitação** definidos e o status final (Aprovado/Reprovado) de cada validação, por favor, acesse o relatório completo em PDF.
+
+Este documento detalha as falhas encontradas e a criticidade de cada uma, oferecendo uma visão transparente da qualidade da aplicação.
+
+[**Acessar Relatório Completo de Testes E2E do Real World App (PDF)**](./Resultados%20de%20Testes%20E2E%20-%20Real%20World%20App.pdf)
+
+---
+
 ## 🛠️ Tecnologias Utilizadas
 
 * **Cypress**: Framework de automação de testes End-to-End.
